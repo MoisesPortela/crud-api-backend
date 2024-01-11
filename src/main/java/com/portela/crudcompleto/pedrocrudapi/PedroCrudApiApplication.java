@@ -8,7 +8,7 @@ public class PedroCrudApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PedroCrudApiApplication.class, args);
-		System.out.println("Olá api");
+		System.out.println("Olá api de drink");
 	}
 
 }
