@@ -18,7 +18,7 @@ public class Drink {
 	private Long id;
 	//omitindo a anotação column pq o jakarta já entende que cada caracteristica é uma coluna
 	private String nome;
-	private TipoBebida tipo;
+	private Integer tipo;
 	private Integer qtd;
 	private String tamanho;
 	private String preco;
@@ -27,7 +27,7 @@ public class Drink {
 	public Drink(Long id, String nome, TipoBebida tipo, Integer qtd, String tamanho, String preco) {
 		this.id = id;
 		this.nome = nome;
-		this.tipo = tipo;
+		setTipo(tipo);
 		this.qtd = qtd;
 		this.tamanho = tamanho;
 		this.preco = preco;
@@ -52,10 +52,11 @@ public class Drink {
 		this.nome = nome;
 	}
 	public TipoBebida getTipo() {
-		return tipo;
+		return TipoBebida.valueOf(tipo);
 	}
 	public void setTipo(TipoBebida tipo) {
-		this.tipo = tipo;
+		if(tipo != null)
+		this.tipo = tipo.getCode();
 	}
 	public Integer getQtd() {
 		return qtd;
