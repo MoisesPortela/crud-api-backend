@@ -21,8 +21,8 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception{
-		Drink drink1 = new Drink (null, "hidromel", TipoBebida.VINHO , 1, "790ml", "80 reais");
-		Drink drink2 = new Drink (null, "Portada", TipoBebida.VINHO , 1, "790ml", "140 reais");
+		Drink drink1 = new Drink (null, "hidromel", tipoBebida.VINHO, 1, "790ml", "80 reais");
+		Drink drink2 = new Drink (null, "Portada", tipoBebida.VINHO, 1, "790ml", "140 reais");
 		
 		drinkRepository.saveAll(Arrays.asList(drink1,drink2));
 	}
