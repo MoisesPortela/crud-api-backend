@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 //anotação para criar tabela no jakarta, sendo o nome da tabela especificado na anotation
 @Entity
-@Table(name="tb_user")
+@Table(name="tb_drink")
 public class Drink {
 	//configurando a geração de id automatica pelo jakarta
 	@Id
@@ -22,6 +22,16 @@ public class Drink {
 	private Integer qtd;
 	private String tamanho;
 	private String preco;
+	
+	public Drink() {};
+	public Drink(Long id, String nome, TipoBebida tipo, Integer qtd, String tamanho, String preco) {
+		this.id = id;
+		this.nome = nome;
+		this.tipo = tipo;
+		this.qtd = qtd;
+		this.tamanho = tamanho;
+		this.preco = preco;
+	}
 	//transformando tudo em string
 	@Override
 	public String toString() {
