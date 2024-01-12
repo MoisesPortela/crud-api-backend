@@ -11,6 +11,8 @@ import com.portela.crudcompleto.pedrocrudapi.repositories.DrinkListRepository;
 import com.portela.crudcompleto.pedrocrudapi.service.exceptions.DatabaseException;
 import com.portela.crudcompleto.pedrocrudapi.service.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class DrinkListService {
 
@@ -44,9 +46,13 @@ public class DrinkListService {
 		
 	}
 	public DrinkList updateList(Long listId, DrinkList list) {
+		try {
 		DrinkList listUpdate = drinkListRepository.getReferenceById(listId);
 		updateData(listUpdate,list);
 		return drinkListRepository.save(listUpdate);
+		}catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(listId);
+		}
 	}
 
 	private void updateData(DrinkList listUpdate, DrinkList list) {

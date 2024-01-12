@@ -12,6 +12,8 @@ import com.portela.crudcompleto.pedrocrudapi.repositories.DrinkRepository;
 import com.portela.crudcompleto.pedrocrudapi.service.exceptions.DatabaseException;
 import com.portela.crudcompleto.pedrocrudapi.service.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class DrinkService {
 
@@ -36,7 +38,7 @@ public class DrinkService {
 		try {
 			if (drinkRepository.existsById(drinkId)) {
 				drinkRepository.deleteById(drinkId);
-			}else {
+			} else {
 				throw new ResourceNotFoundException(drinkId);
 			}
 			drinkRepository.deleteById(drinkId);
@@ -46,11 +48,15 @@ public class DrinkService {
 	}
 
 	public Drink updateDrink(Long drinkId, Drink drink) {
-		// pega a referencia do objeto no banco de dados e deixa preparado
-		// para trabalharmos com ele para só depois jogar novamente no banco
-		Drink drinkUpdate = drinkRepository.getReferenceById(drinkId);
-		updateData(drinkUpdate, drink);
-		return drinkRepository.save(drinkUpdate);
+		try {
+			// pega a referencia do objeto no banco de dados e deixa preparado
+			// para trabalharmos com ele para só depois jogar novamente no banco
+			Drink drinkUpdate = drinkRepository.getReferenceById(drinkId);
+			updateData(drinkUpdate, drink);
+			return drinkRepository.save(drinkUpdate);
+		}catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(drinkId);
+		}
 
 	}
 
