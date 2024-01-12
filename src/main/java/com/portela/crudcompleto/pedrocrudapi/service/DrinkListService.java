@@ -28,5 +28,15 @@ public class DrinkListService {
 	public void deleteList (Long drinkListId) {
 		drinkListRepository.deleteById(drinkListId);
 	}
+	public DrinkList updateList(Long listId, DrinkList list) {
+		DrinkList listUpdate = drinkListRepository.getReferenceById(listId);
+		updateData(listUpdate,list);
+		return drinkListRepository.save(listUpdate);
+	}
 
+	private void updateData(DrinkList listUpdate, DrinkList list) {
+		listUpdate.setName(list.getName());
+		
+	}
+	
 }

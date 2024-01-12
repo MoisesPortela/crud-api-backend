@@ -31,5 +31,21 @@ public class DrinkService {
 	public void deleteDrink (Long drinkId) {
 		drinkRepository.deleteById(drinkId);
 	}
+	public Drink updateDrink (Long drinkId, Drink drink) {
+		//pega a referencia do objeto no banco de dados e deixa preparado 
+			//para trabalharmos com ele para só depois jogar novamente no banco
+		Drink drinkUpdate = drinkRepository.getReferenceById(drinkId);
+		updateData(drinkUpdate,drink);
+		return drinkRepository.save(drinkUpdate);
+		
+	}
+
+	private void updateData(Drink drinkUpdate, Drink drink) {
+		drinkUpdate.setNome(drink.getNome());
+		drinkUpdate.setTipo(drink.getTipo());
+		drinkUpdate.setQtd(drink.getQtd());
+		drinkUpdate.setTamanho(drink.getTamanho());
+		drinkUpdate.setPreco(drink.getPreco());
+	}
 
 }

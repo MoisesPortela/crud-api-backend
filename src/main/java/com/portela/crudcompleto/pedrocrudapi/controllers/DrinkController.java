@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,30 +30,31 @@ public class DrinkController {
 		List<Drink> drinkList = drinkService.findAll();
 		return ResponseEntity.ok().body(drinkList);
 	}
-	@GetMapping(value="/{drinkId}")
-	public ResponseEntity<Drink> findDrinkById(@PathVariable Long drinkId){
+
+	@GetMapping(value = "/{drinkId}")
+	public ResponseEntity<Drink> findDrinkById(@PathVariable Long drinkId) {
 		Drink drink = drinkService.findDrinkById(drinkId);
 		return ResponseEntity.ok().body(drink);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<Drink> createDrink(@RequestBody Drink drink){
+	public ResponseEntity<Drink> createDrink(@RequestBody Drink drink) {
 		Drink drinkCreated = drinkService.createDrink(drink);
-		//mudando o status de 200 pra 201
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{drinkId}").buildAndExpand(drinkCreated.getId()).toUri();	
+		// mudando o status de 200 pra 201
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{drinkId}")
+				.buildAndExpand(drinkCreated.getId()).toUri();
 		return ResponseEntity.created(uri).body(drinkCreated);
 	}
+
 	@DeleteMapping(value = "/{drinkId}")
-	public ResponseEntity<Void> deleteDrink(@PathVariable Long drinkId){
+	public ResponseEntity<Void> deleteDrink(@PathVariable Long drinkId) {
 		drinkService.deleteDrink(drinkId);
 		return ResponseEntity.noContent().build();
-		
 	}
-	
-	
-	
-	
-	
-	
+
+	@PutMapping(value = "/{drinkId}")
+	public ResponseEntity<Drink> updateDrink(@PathVariable Long drinkId, @RequestBody Drink drink) {
+		Drink drinkUpdated = drinkService.updateDrink(drinkId, drink);
+		return ResponseEntity.ok().body(drinkUpdated);
+	}
 }

@@ -26,11 +26,6 @@ public class Drink implements Serializable {
 	// omitindo a anotação column pq o jakarta já entende que cada caracteristica é
 	// uma coluna
 	private String nome;
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	private Integer tipo;
 	private Integer qtd;
 	private String tamanho;
@@ -50,6 +45,9 @@ public class Drink implements Serializable {
 		this.qtd = qtd;
 		this.tamanho = tamanho;
 		this.preco = preco;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	// gets and sets
