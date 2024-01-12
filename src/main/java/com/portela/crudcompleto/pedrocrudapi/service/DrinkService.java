@@ -1,4 +1,5 @@
 package com.portela.crudcompleto.pedrocrudapi.service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.portela.crudcompleto.pedrocrudapi.models.Drink;
 import com.portela.crudcompleto.pedrocrudapi.repositories.DrinkRepository;
+import com.portela.crudcompleto.pedrocrudapi.service.exceptions.ResourceNotFoundException;
 
 @Service
 public class DrinkService {
@@ -21,23 +23,24 @@ public class DrinkService {
 
 	public Drink findDrinkById(Long drinkId) {
 		Optional<Drink> drink = drinkRepository.findById(drinkId);
-		return drink.get();
+		return drink.orElseThrow(() -> new ResourceNotFoundException(drinkId));
 	}
-	
+
 	public Drink createDrink(Drink drink) {
 		return drinkRepository.save(drink);
 	}
-	
-	public void deleteDrink (Long drinkId) {
+
+	public void deleteDrink(Long drinkId) {
 		drinkRepository.deleteById(drinkId);
 	}
-	public Drink updateDrink (Long drinkId, Drink drink) {
-		//pega a referencia do objeto no banco de dados e deixa preparado 
-			//para trabalharmos com ele para só depois jogar novamente no banco
+
+	public Drink updateDrink(Long drinkId, Drink drink) {
+		// pega a referencia do objeto no banco de dados e deixa preparado
+		// para trabalharmos com ele para só depois jogar novamente no banco
 		Drink drinkUpdate = drinkRepository.getReferenceById(drinkId);
-		updateData(drinkUpdate,drink);
+		updateData(drinkUpdate, drink);
 		return drinkRepository.save(drinkUpdate);
-		
+
 	}
 
 	private void updateData(Drink drinkUpdate, Drink drink) {
