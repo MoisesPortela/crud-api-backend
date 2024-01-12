@@ -17,9 +17,16 @@ public class DrinkListService {
 
 	}
 
-	public DrinkList findById(Long drinkListId) {
+	public DrinkList findListById(Long drinkListId) {
 		Optional<DrinkList> drinkList = drinkListRepository.findById(drinkListId);
 		return drinkList.get();
+	}
+	
+	public DrinkList createList(DrinkList list) {
+		return drinkListRepository.save(list);
+	}
+	public void deleteList (Long drinkListId) {
+		drinkListRepository.deleteById(drinkListId);
 	}
 
 }

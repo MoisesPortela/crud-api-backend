@@ -19,9 +19,17 @@ public class DrinkService {
 
 	}
 
-	public Drink findById(Long drinkId) {
+	public Drink findDrinkById(Long drinkId) {
 		Optional<Drink> drink = drinkRepository.findById(drinkId);
 		return drink.get();
+	}
+	
+	public Drink createDrink(Drink drink) {
+		return drinkRepository.save(drink);
+	}
+	
+	public void deleteDrink (Long drinkId) {
+		drinkRepository.deleteById(drinkId);
 	}
 
 }
