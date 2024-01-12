@@ -37,11 +37,9 @@ public class Drink implements Serializable {
 	private String preco;
 
 	@ManyToMany
-	@JoinTable(name = "tb_lista_bebidas", 
-	joinColumns = @JoinColumn(name="drink_id"),
-	inverseJoinColumns = @JoinColumn(name="list_id"))
-	private Set<DrinkList> listasBebidas = new HashSet<>();
-
+	@JoinTable(name = "tb_drinks_list", joinColumns = @JoinColumn(name = "drink_id"), inverseJoinColumns = @JoinColumn(name = "list_id"))
+	private Set<DrinkList> drinksList = new HashSet<>();
+	
 	public Drink() {
 	};
 
@@ -103,8 +101,9 @@ public class Drink implements Serializable {
 	public void setPreco(String preco) {
 		this.preco = preco;
 	}
+
 	public Set<DrinkList> getDrinkList() {
-		return listasBebidas;
+		return drinksList;
 	}
 
 	// gerando o equal and hash code para comparar dois objetos nas tabelas
