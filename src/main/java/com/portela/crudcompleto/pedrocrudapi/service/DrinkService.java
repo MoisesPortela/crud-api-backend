@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.portela.crudcompleto.pedrocrudapi.models.Drink;
 import com.portela.crudcompleto.pedrocrudapi.repositories.DrinkRepository;
+import com.portela.crudcompleto.pedrocrudapi.service.exceptions.DatabaseException;
 import com.portela.crudcompleto.pedrocrudapi.service.exceptions.ResourceNotFoundException;
 
 @Service
@@ -31,7 +33,16 @@ public class DrinkService {
 	}
 
 	public void deleteDrink(Long drinkId) {
-		drinkRepository.deleteById(drinkId);
+		try {
+			if (drinkRepository.existsById(drinkId)) {
+				drinkRepository.deleteById(drinkId);
+			}else {
+				throw new ResourceNotFoundException(drinkId);
+			}
+			drinkRepository.deleteById(drinkId);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
 	}
 
 	public Drink updateDrink(Long drinkId, Drink drink) {

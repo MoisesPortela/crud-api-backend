@@ -45,14 +45,14 @@ public class DrinkListController {
 		return ResponseEntity.created(uri).body(listCreate);
 	}
 
-	@DeleteMapping(value = "{drinkListId}")
-	public ResponseEntity<Void> deleteList(@PathVariable Long listId) {
-		drinkListService.deleteList(listId);
+	@DeleteMapping(value = "/{drinkListId}")
+	public ResponseEntity<Void> deleteDrink(@PathVariable Long drinkListId) {
+		drinkListService.deleteList(drinkListId);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PutMapping(value = "/{drinkListId}")
-	public ResponseEntity<DrinkList> updateList(@PathVariable Long drinkListId, @RequestBody DrinkList drinkList){
+	public ResponseEntity<DrinkList> updateList(@PathVariable Long drinkListId, @RequestBody DrinkList drinkList) {
 		DrinkList listUpdated = drinkListService.updateList(drinkListId, drinkList);
 		return ResponseEntity.ok().body(listUpdated);
 	}
