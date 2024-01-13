@@ -33,15 +33,19 @@ public class TestConfig implements CommandLineRunner{
 		Drink drink6 = new Drink (null, "Heineken", TipoBebida.CERVEJA, 1, "190ml", "5 reais");
 		Drink drink7 = new Drink (null, "Suco de Laranja", TipoBebida.SUCO, 1, "1L", "140 reais");
 		Drink drink8 = new Drink (null, "Pepsi com Johny Walker", TipoBebida.WHISKY, 1, "330ml", "10 reais");
+		Drink drink9 = new Drink (null, "Café", TipoBebida.ESTIMULANTE, 20, "250ml", "3.59 reais");
+		Drink drink10 = new Drink (null, "Energético", TipoBebida.ESTIMULANTE, 5, "250ml", "10 reais");
+		Drink drink11 = new Drink (null, "Chopp puro malte", TipoBebida.CERVEJA, 5, "600ml", "12 reais");
 		
 		DrinkList drinkList1 = new DrinkList(null,"Não Alcoolicos");
 		DrinkList drinkList2 = new DrinkList(null,"Degustação");
 		DrinkList drinkList3 = new DrinkList(null,"Churrasco");
 		DrinkList drinkList4 = new DrinkList(null,"18tão");
+		DrinkList drinkList5 = new DrinkList(null,"Lanche tarde");
 		
-		drinkRepository.saveAll(Arrays.asList(drink1,drink2,drink3,drink4,drink5,drink6,drink7,drink8));
+		drinkRepository.saveAll(Arrays.asList(drink1,drink2,drink3,drink4,drink5,drink6,drink7,drink8,drink9,drink10,drink11));
 		
-		drinkListRepository.saveAll(Arrays.asList(drinkList1,drinkList2,drinkList3,drinkList4));
+		drinkListRepository.saveAll(Arrays.asList(drinkList1,drinkList2,drinkList3,drinkList4,drinkList5));
 		
 		drink1.getDrinkList().add(drinkList2);
 		drink2.getDrinkList().add(drinkList2);
@@ -52,8 +56,13 @@ public class TestConfig implements CommandLineRunner{
 		drink7.getDrinkList().add(drinkList1);
 		drink8.getDrinkList().add(drinkList4);
 		drink8.getDrinkList().add(drinkList3);
+		drink9.getDrinkList().add(drinkList5);
+		drink4.getDrinkList().add(drinkList5);
+		drink5.getDrinkList().add(drinkList5);
+		drink11.getDrinkList().add(drinkList3);
+		drink11.getDrinkList().add(drinkList4);
 		
-		drinkRepository.saveAll(Arrays.asList(drink1,drink2,drink3,drink4,drink5,drink6,drink7,drink8));
+		drinkRepository.saveAll(Arrays.asList(drink1,drink2,drink3,drink4,drink5,drink6,drink7,drink8,drink9,drink10,drink11));
 	}
 	
 	

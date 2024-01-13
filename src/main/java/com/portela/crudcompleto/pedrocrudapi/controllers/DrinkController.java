@@ -1,9 +1,10 @@
 package com.portela.crudcompleto.pedrocrudapi.controllers;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +25,10 @@ public class DrinkController {
 	// anotação pra injetar algo dentro da classe, no caso o drinkService
 	@Autowired
 	private DrinkService drinkService;
-
+ 
 	@GetMapping
-	public ResponseEntity<List<Drink>> findAll() {
-		List<Drink> drinkList = drinkService.findAll();
+	public ResponseEntity<Page<Drink>> findAll(Pageable pageable) {
+		Page<Drink> drinkList = drinkService.findAll(pageable);
 		return ResponseEntity.ok().body(drinkList);
 	}
 

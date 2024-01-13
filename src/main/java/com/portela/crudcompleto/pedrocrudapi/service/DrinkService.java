@@ -1,10 +1,11 @@
 package com.portela.crudcompleto.pedrocrudapi.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.portela.crudcompleto.pedrocrudapi.models.Drink;
@@ -20,8 +21,8 @@ public class DrinkService {
 	@Autowired
 	private DrinkRepository drinkRepository;
 
-	public List<Drink> findAll() {
-		return drinkRepository.findAll();
+	public Page<Drink> findAll(Pageable pageable) {
+		return drinkRepository.findAll(pageable);
 
 	}
 

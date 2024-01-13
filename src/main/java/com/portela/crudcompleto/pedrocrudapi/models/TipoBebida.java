@@ -1,7 +1,7 @@
 package com.portela.crudcompleto.pedrocrudapi.models;
 
 public enum TipoBebida {
-	VINHO(1),SUCO(2),REFRIGERANTE(3),CERVEJA(4),WHISKY(5);
+	VINHO(1),SUCO(2),REFRIGERANTE(3),CERVEJA(4),WHISKY(5), ESTIMULANTE(6);
 	private int code;
 	
 	private TipoBebida(int code) {
