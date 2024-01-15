@@ -26,16 +26,16 @@ public class TestConfig implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception{
 		Drink drink1 = new Drink (null, "hidromel", TipoBebida.VINHO, 1, "790ml", "80 reais");
-		Drink drink2 = new Drink (null, "Portada", TipoBebida.VINHO, 1, "790ml", "140 reais");
-		Drink drink3 = new Drink (null, "Suco de uva", TipoBebida.SUCO, 1, "1L", "12 reais");
-		Drink drink4 = new Drink (null, "Pepsi", TipoBebida.REFRIGERANTE, 1, "1L", "8 reais");
-		Drink drink5 = new Drink (null, "Black Label", TipoBebida.WHISKY, 1, "790ml", "220 reais");
-		Drink drink6 = new Drink (null, "Heineken", TipoBebida.CERVEJA, 1, "190ml", "5 reais");
-		Drink drink7 = new Drink (null, "Suco de Laranja", TipoBebida.SUCO, 1, "1L", "140 reais");
-		Drink drink8 = new Drink (null, "Pepsi com Johny Walker", TipoBebida.WHISKY, 1, "330ml", "10 reais");
-		Drink drink9 = new Drink (null, "Café", TipoBebida.ESTIMULANTE, 20, "250ml", "3.59 reais");
-		Drink drink10 = new Drink (null, "Energético", TipoBebida.ESTIMULANTE, 5, "250ml", "10 reais");
-		Drink drink11 = new Drink (null, "Chopp puro malte", TipoBebida.CERVEJA, 5, "600ml", "12 reais");
+		Drink drink2 = new Drink (null, "portada", TipoBebida.VINHO, 1, "790ml", "140 reais");
+		Drink drink3 = new Drink (null, "del valle uva", TipoBebida.SUCO, 1, "1L", "12 reais");
+		Drink drink4 = new Drink (null, "pepsi", TipoBebida.REFRIGERANTE, 1, "1L", "8 reais");
+		Drink drink5 = new Drink (null, "black Label", TipoBebida.WHISKY, 1, "790ml", "220 reais");
+		Drink drink6 = new Drink (null, "heineken", TipoBebida.CERVEJA, 1, "190ml", "5 reais");
+		Drink drink7 = new Drink (null, "suco de Laranja", TipoBebida.SUCO, 1, "1L", "140 reais");
+		Drink drink8 = new Drink (null, "pepsi com Johny Walker", TipoBebida.WHISKY, 1, "330ml", "10 reais");
+		Drink drink9 = new Drink (null, "café", TipoBebida.ESTIMULANTE, 20, "250ml", "3.59 reais");
+		Drink drink10 = new Drink (null, "energético", TipoBebida.ESTIMULANTE, 5, "250ml", "10 reais");
+		Drink drink11 = new Drink (null, "chopp puro malte", TipoBebida.CERVEJA, 5, "600ml", "12 reais");
 		
 		DrinkList drinkList1 = new DrinkList(null,"Não Alcoolicos");
 		DrinkList drinkList2 = new DrinkList(null,"Degustação");
