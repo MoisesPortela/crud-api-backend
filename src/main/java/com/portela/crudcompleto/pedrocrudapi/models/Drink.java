@@ -26,7 +26,7 @@ public class Drink implements Serializable {
 	// omitindo a anotação column pq o jakarta já entende que cada caracteristica é
 	// uma coluna
 	private String nome;
-	private Integer tipo;
+	private String tipo;
 	private Integer qtd;
 	private String tamanho;
 	private String preco;
@@ -38,10 +38,10 @@ public class Drink implements Serializable {
 	public Drink() {
 	};
 
-	public Drink(Long id, String nome, TipoBebida tipo, Integer qtd, String tamanho, String preco) {
+	public Drink(Long id, String nome, String tipo, Integer qtd, String tamanho, String preco) {
 		this.id = id;
 		this.nome = nome;
-		setTipo(tipo);
+		this.tipo=tipo;
 		this.qtd = qtd;
 		this.tamanho = tamanho;
 		this.preco = preco;
@@ -66,14 +66,11 @@ public class Drink implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public TipoBebida getTipo() {
-		return TipoBebida.valueOf(tipo);
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
-
-	public void setTipo(TipoBebida tipo) {
-		if (tipo != null)
-			this.tipo = tipo.getCode();
+	public String getTipo() {
+		return tipo;
 	}
 
 	public Integer getQtd() {

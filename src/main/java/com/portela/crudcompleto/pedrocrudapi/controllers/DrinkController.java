@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.portela.crudcompleto.pedrocrudapi.dto.DrinkDTO;
 import com.portela.crudcompleto.pedrocrudapi.models.Drink;
 import com.portela.crudcompleto.pedrocrudapi.service.DrinkService;
 
@@ -27,14 +28,14 @@ public class DrinkController {
 	private DrinkService drinkService;
  
 	@GetMapping
-	public ResponseEntity<Page<Drink>> findAll(Pageable pageable) {
-		Page<Drink> drinkList = drinkService.findAll(pageable);
+	public ResponseEntity<Page<DrinkDTO>> findAll(Pageable pageable) {
+		Page<DrinkDTO> drinkList = drinkService.findAll(pageable);
 		return ResponseEntity.ok().body(drinkList);
 	}
 
 	@GetMapping(value = "/{drinkId}")
-	public ResponseEntity<Drink> findDrinkById(@PathVariable Long drinkId) {
-		Drink drink = drinkService.findDrinkById(drinkId);
+	public ResponseEntity<DrinkDTO> findDrinkById(@PathVariable Long drinkId) {
+		DrinkDTO drink = drinkService.findDrinkById(drinkId);
 		return ResponseEntity.ok().body(drink);
 	}
 

@@ -1,13 +1,14 @@
 package com.portela.crudcompleto.pedrocrudapi.service;
 
-import java.util.Optional;
-
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.portela.crudcompleto.pedrocrudapi.dto.DrinkDTO;
 import com.portela.crudcompleto.pedrocrudapi.models.Drink;
 import com.portela.crudcompleto.pedrocrudapi.repositories.DrinkRepository;
 import com.portela.crudcompleto.pedrocrudapi.service.exceptions.DatabaseException;
@@ -20,15 +21,20 @@ public class DrinkService {
 
 	@Autowired
 	private DrinkRepository drinkRepository;
+	
+	private ModelMapper modelMapper;
 
-	public Page<Drink> findAll(Pageable pageable) {
-		return drinkRepository.findAll(pageable);
+	public Page<DrinkDTO> findAll(Pageable pageable) {
+		Page<Drink> drink = drinkRepository.findAll(pageable);
+		Page<DrinkDTO> drinkDto = drink.map(Drink -> modelMapper.map(Drink, DrinkDTO.class));
+		return drinkDto;
 
 	}
-
-	public Drink findDrinkById(Long drinkId) {
-		Optional<Drink> drink = drinkRepository.findById(drinkId);
-		return drink.orElseThrow(() -> new ResourceNotFoundException(drinkId));
+	@Transactional(readOnly = true)
+	public DrinkDTO findDrinkById(Long drinkId) {
+		Drink drink = drinkRepository.findById(drinkId).get();
+		DrinkDTO drinkDto = new DrinkDTO(drink);
+		return drinkDto;
 	}
 
 	public Drink createDrink(Drink drink) {

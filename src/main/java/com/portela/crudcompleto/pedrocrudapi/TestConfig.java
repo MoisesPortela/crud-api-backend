@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Profile;
 
 import com.portela.crudcompleto.pedrocrudapi.models.Drink;
 import com.portela.crudcompleto.pedrocrudapi.models.DrinkList;
-import com.portela.crudcompleto.pedrocrudapi.models.TipoBebida;
 import com.portela.crudcompleto.pedrocrudapi.repositories.DrinkListRepository;
 import com.portela.crudcompleto.pedrocrudapi.repositories.DrinkRepository;
 
@@ -25,17 +24,17 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception{
-		Drink drink1 = new Drink (null, "hidromel", TipoBebida.VINHO, 1, "790ml", "80 reais");
-		Drink drink2 = new Drink (null, "portada", TipoBebida.VINHO, 1, "790ml", "140 reais");
-		Drink drink3 = new Drink (null, "del valle uva", TipoBebida.SUCO, 1, "1L", "12 reais");
-		Drink drink4 = new Drink (null, "pepsi", TipoBebida.REFRIGERANTE, 1, "1L", "8 reais");
-		Drink drink5 = new Drink (null, "black Label", TipoBebida.WHISKY, 1, "790ml", "220 reais");
-		Drink drink6 = new Drink (null, "heineken", TipoBebida.CERVEJA, 1, "190ml", "5 reais");
-		Drink drink7 = new Drink (null, "suco de Laranja", TipoBebida.SUCO, 1, "1L", "140 reais");
-		Drink drink8 = new Drink (null, "pepsi com Johny Walker", TipoBebida.WHISKY, 1, "330ml", "10 reais");
-		Drink drink9 = new Drink (null, "café", TipoBebida.ESTIMULANTE, 20, "250ml", "3.59 reais");
-		Drink drink10 = new Drink (null, "energético", TipoBebida.ESTIMULANTE, 5, "250ml", "10 reais");
-		Drink drink11 = new Drink (null, "chopp puro malte", TipoBebida.CERVEJA, 5, "600ml", "12 reais");
+		Drink drink1 = new Drink (null, "hidromel", "vinho", 1, "790ml", "80 reais");
+		Drink drink2 = new Drink (null, "portada", "vinho", 1, "790ml", "140 reais");
+		Drink drink3 = new Drink (null, "del valle uva", "suco", 1, "1L", "12 reais");
+		Drink drink4 = new Drink (null, "pepsi", "refrigerante", 1, "1L", "8 reais");
+		Drink drink5 = new Drink (null, "black Label", "whiky", 1, "790ml", "220 reais");
+		Drink drink6 = new Drink (null, "heineken", "cerveja", 1, "190ml", "5 reais");
+		Drink drink7 = new Drink (null, "suco de Laranja", "suco", 1, "1L", "140 reais");
+		Drink drink8 = new Drink (null, "pepsi com Johny Walker", "whiky", 1, "330ml", "10 reais");
+		Drink drink9 = new Drink (null, "café", "estimulante", 20, "250ml", "3.59 reais");
+		Drink drink10 = new Drink (null, "energético", "estimulante", 5, "250ml", "10 reais");
+		Drink drink11 = new Drink (null, "chopp puro malte", "cerveja", 5, "600ml", "12 reais");
 		
 		DrinkList drinkList1 = new DrinkList(null,"Não Alcoolicos");
 		DrinkList drinkList2 = new DrinkList(null,"Degustação");
